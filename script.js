@@ -5,8 +5,7 @@ $(document).ready(function() {
 		data.forEach(function(itemLi) {
 			let item = document.createElement('li');
 			item.innerText = (itemLi['PLU'] + ' ' + itemLi['Наименование товар']).toLowerCase();
-			
-			//document.body.append(item);
+			console.log(data);
 			$('.elastic').append(item);
 		})
 		
