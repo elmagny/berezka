@@ -1,16 +1,10 @@
 $(document).ready(function() {
 	$.getJSON
-	('https://spreadsheets.google.com/feeds/list/1iFBckR99x7hO6UOj8dC7TRZPJ3Ac4JiSLekOHLXO2yc/od6/public/values?alt=json', 
+	('https://opensheet.vercel.app/1iFBckR99x7hO6UOj8dC7TRZPJ3Ac4JiSLekOHLXO2yc/Лист1', 
 	function(data) {
-		data = data['feed']['entry'];
-		//console.log(data);
-		//console.log(data[0].gsx$наименованиетовар.$t);
-		//console.log(data[0].gsx$plu.$t);
-
-
 		data.forEach(function(itemLi) {
 			let item = document.createElement('li');
-			item.innerText = (itemLi.gsx$plu.$t + ' ' + itemLi.gsx$наименованиетовар.$t).toLowerCase();
+			item.innerText = (itemLi['PLU'] + ' ' + itemLi['Наименование товар']).toLowerCase();
 			
 			//document.body.append(item);
 			$('.elastic').append(item);
@@ -18,6 +12,7 @@ $(document).ready(function() {
 		
 	});
 });
+
 
 document.querySelector('#elastic').oninput = function() {
 	let val = this.value.trim().toLowerCase();
